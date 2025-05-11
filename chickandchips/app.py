@@ -1,4 +1,6 @@
 import os
+import uuid
+from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
 
 from utils.sms_sender import send_whatsapp_message
@@ -7,6 +9,7 @@ app = Flask(__name__)
 
 # Lista temporal para almacenar los pedidos
 pedidos = []
+historial = []  # Lista para almacenar los pedidos finalizados
 
 @app.route('/')
 def home():
@@ -24,15 +27,23 @@ def order():
         if not phone.startswith('+'):
             phone = f"+57{phone}"
 
-        # Guardar el pedido en la lista
-        pedidos.append({'name': name, 'phone': phone, 'bebida': bebida, 'salsa': salsa})
+        # Generar número de orden único
+        order_number = str(uuid.uuid4())[:8]  # Recortar a 8 caracteres
+        order_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Hora del pedido
 
-        # Mensaje para Fabián
-        #message_fabian = f"Nuevo pedido de {name}: Bebida - {bebida}, Salsa - {salsa}"
-        #send_whatsapp_message(phone, message_fabian)
+        # Guardar el pedido en la lista (sin enviar mensaje)
+        pedido = {
+            'order_number': order_number,
+            'name': name,
+            'phone': phone,
+            'bebida': bebida,
+            'salsa': salsa,
+            'time': order_time
+        }
+        pedidos.append(pedido)
 
-        print(f"Pedido recibido: {name}, {phone}, {bebida}, {salsa}")
-        return render_template('confirmation.html', name=name)
+        print(f"Pedido recibido: {name}, {phone}, {bebida}, {salsa}, Número de orden: {order_number}")
+        return render_template('confirmation.html', name=name, order_number=order_number)
     return render_template('order.html')
 
 @app.route('/confirm', methods=['POST'])
@@ -43,19 +54,28 @@ def confirm():
 def admin():
     return render_template('admin.html', pedidos=pedidos)
 
+@app.route('/historial')
+def historial_pedidos():
+    return render_template('historial.html', historial=historial)
+
 @app.route('/finalizar/<int:index>', methods=['POST'])
 def finalizar(index):
     try:
         pedido = pedidos.pop(index)
+        final_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Hora de finalización
 
-        # Mensaje para el cliente
-        message_cliente = f"Tu pedido de Chick & Chips está listo: {pedido['bebida']} con {pedido['salsa']}."
-        send_whatsapp_message(pedido['phone'], message_cliente)
+        # Añadir la hora de finalización al pedido
+        pedido['final_time'] = final_time
+        historial.append(pedido)
 
-        print(f"Pedido finalizado: {pedido['name']}")
+        # Mensaje solo al finalizar
+        message_cliente = f"Hola {pedido['name']}, tu pedido de Chick & Chips (Orden #{pedido['order_number']}) está listo para recoger."
+        # send_whatsapp_message(pedido['phone'], message_cliente)
+
+        print(f"Pedido finalizado: {pedido['name']} - Orden #{pedido['order_number']}")
     except IndexError:
         print("Pedido no encontrado")
     return redirect('/admin')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

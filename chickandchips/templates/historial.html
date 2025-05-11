@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Historial de Pedidos</title>
+</head>
+<body>
+    <h2>Historial de Pedidos Finalizados</h2>
+    <table border="1">
+        <tr>
+            <th>Orden</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Bebida</th>
+            <th>Salsa</th>
+            <th>Hora de Pedido</th>
+            <th>Hora de Finalización</th>
+        </tr>
+        {% for pedido in historial %}
+        <tr>
+            <td>{{ pedido.order_number }}</td>
+            <td>{{ pedido.name }}</td>
+            <td>{{ pedido.phone }}</td>
+            <td>{{ pedido.bebida }}</td>
+            <td>{{ pedido.salsa }}</td>
+            <td>{{ pedido.time }}</td>
+            <td>{{ pedido.final_time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/admin"><button>Volver a Administración</button></a>
+</body>
+</html>

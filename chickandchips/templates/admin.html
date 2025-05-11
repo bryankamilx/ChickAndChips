@@ -1,33 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Administrador - Chick & Chips</title>
-</head>
-<body>
-    <h2>Pedidos en Cola</h2>
-    <table border="1">
-        <tr>
-            <th>Nombre</th>
-            <th>Teléfono</th>
-            <th>Bebida</th>
-            <th>Salsa</th>
-            <th>Acción</th>
-        </tr>
-        {% for pedido in pedidos %}
-        <tr>
-            <td>{{ pedido.name }}</td>
-            <td>{{ pedido.phone }}</td>
-            <td>{{ pedido.bebida }}</td>
-            <td>{{ pedido.salsa }}</td>
-            <td>
-                <form action="/finalizar/{{ loop.index0 }}" method="post">
-                    <button type="submit">Finalizar</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <a href="/">Volver a Inicio</a>
-</body>
-</html>
+<h2>Pedidos en Cola</h2>
+<table border="1">
+    <tr>
+        <th>Orden</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Bebida</th>
+        <th>Salsa</th>
+        <th>Hora</th>
+        <th>Acción</th>
+    </tr>
+    {% for pedido in pedidos %}
+    <tr>
+        <td>{{ pedido.order_number }}</td>
+        <td>{{ pedido.name }}</td>
+        <td>{{ pedido.phone }}</td>
+        <td>{{ pedido.bebida }}</td>
+        <td>{{ pedido.salsa }}</td>
+        <td>{{ pedido.time }}</td>
+        <td>
+            <form action="/finalizar/{{ loop.index0 }}" method="post">
+                <button type="submit">Finalizar</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="/historial"><button>Ver Historial de Pedidos</button></a>
+<a href="/">Volver a Inicio</a>
