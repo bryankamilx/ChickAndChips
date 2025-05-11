@@ -1,0 +1,40 @@
+Date: 7/5/2025
+Time: 15:39
+Phone Number: +573203601902
+Message: Nuevo pedido de Paola: Bebida - Coca-Cola, Salsa - BBQ
+--------------------
+Date: 7/5/2025
+Time: 15:41
+Phone Number: +573203601902
+Message: Tu pedido de Chick & Chips está listo: Coca-Cola con BBQ.
+--------------------
+Date: 7/5/2025
+Time: 15:43
+Phone Number: +573203601902
+Message: Nuevo pedido de Bryan: Bebida - Agua, Salsa - Miel Mostaza
+--------------------
+Date: 9/5/2025
+Time: 8:53
+Phone Number: +573246556300
+Message: Nuevo pedido de Bryan: Bebida - Coca-Cola, Salsa - BBQ
+--------------------
+Date: 9/5/2025
+Time: 8:56
+Phone Number: +573246556300
+Message: Tu pedido de Chick & Chips está listo: Coca-Cola con BBQ.
+--------------------
+Date: 9/5/2025
+Time: 9:7
+Phone Number: +573246556300
+Message: Tu pedido de Chick & Chips está listo: Sprite con Miel Mostaza.
+--------------------
+Date: 9/5/2025
+Time: 9:43
+Phone Number: +573209788639
+Message: Tu pedido de Chick & Chips está listo: Agua con Miel Mostaza.
+--------------------
+Date: 10/5/2025
+Time: 17:59
+Phone Number: +573162650569
+Message: Tu pedido de Chick & Chips está listo: Agua con Miel Mostaza.
+--------------------
