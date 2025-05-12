@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pedido Confirmado</title>
+    <title>Pedido Confirmado - Chick & Chips</title>
+    <link rel="stylesheet" type="text/css" href="/static/style_cliente.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h2>¡Pedido Realizado!</h2>
-    <p>Gracias, {{ name }}. Tu pedido ha sido registrado.</p>
-    <p>Número de Orden: <strong>{{ order_number }}</strong></p>
-    <p>Recibirás un mensaje cuando esté listo para recoger.</p>
-    <a href="/">Volver a Inicio</a>
+    <div class="header">
+        <h1 class="logo">CHICK & CHIPS</h1>
+        <p>Calle 21 # 1-43</p>
+    </div>
+    <div class="container">
+        <h2 class="message">¡Pedido Realizado!</h2>
+        <p class="message">Gracias {{ name }}, tu pedido ha sido registrado.</p>
+        <p class="message">Número de Orden: {{ order_number }}</p>
+        <p class="message">Te llegará un mensaje de confirmación.</p>
+        <a href="/"><button>Volver a Inicio</button></a>
+    </div>
 </body>
 </html>

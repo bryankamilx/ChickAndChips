@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programar Pedido - Chick & Chips</title>
+    <link rel="stylesheet" type="text/css" href="/static/style_cliente.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo">CHICK & CHIPS</h1>
+        <p>Calle 21 # 1-43</p>
+    </div>
+    <div class="container">
+        <h2>Programar Pedido</h2>
+        <form action="/schedule" method="post">
+            <label>Nombre:</label>
+            <input type="text" name="name" required placeholder="Ingrese su nombre">
+
+            <label>Teléfono:</label>
+            <input type="text" name="phone" required placeholder="Número de contacto">
+
+            <label>Hora de Recogida:</label>
+            <select name="hora">
+                {% for h in range(9, 16) %}
+                    <option value="{{ h }}">{{ h }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Minuto:</label>
+<select name="minuto">
+    {% for m in range(0, 60, 5) %}
+        <option value="{{ m }}">{{ "{:02d}".format(m) }}</option>
+    {% endfor %}
+</select>
+
+
+            <label>Bebida:</label>
+            <select name="bebida">
+                <option value="Coca-Cola">Coca-Cola</option>
+                <option value="Sprite">Sprite</option>
+                <option value="Agua">Agua</option>
+            </select>
+
+            <label>Salsa:</label>
+            <select name="salsa">
+                <option value="BBQ">BBQ</option>
+                <option value="Miel Mostaza">Miel Mostaza</option>
+                <option value="Tártara">Tártara</option>
+            </select>
+
+            <button type="submit">Programar Pedido</button>
+        </form>
+        <br>
+        <a href="/"><button>Volver a Inicio</button></a>
+    </div>
+</body>
+</html>

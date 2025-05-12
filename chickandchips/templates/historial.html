@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Historial de Pedidos</title>
+    <title>Historial de Pedidos - Chick & Chips</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h2>Historial de Pedidos Finalizados</h2>
-    <table border="1">
-        <tr>
-            <th>Orden</th>
-            <th>Nombre</th>
-            <th>Teléfono</th>
-            <th>Bebida</th>
-            <th>Salsa</th>
-            <th>Hora de Pedido</th>
-            <th>Hora de Finalización</th>
-        </tr>
-        {% for pedido in historial %}
-        <tr>
-            <td>{{ pedido.order_number }}</td>
-            <td>{{ pedido.name }}</td>
-            <td>{{ pedido.phone }}</td>
-            <td>{{ pedido.bebida }}</td>
-            <td>{{ pedido.salsa }}</td>
-            <td>{{ pedido.time }}</td>
-            <td>{{ pedido.final_time }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <a href="/admin"><button>Volver a Administración</button></a>
+    <div class="header">
+        <h1>Historial de Pedidos Finalizados</h1>
+    </div>
+    <div class="container">
+        <div class="table-container">
+            {% if historial %}
+            <table>
+                <tr>
+                    <th>Orden</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Bebida</th>
+                    <th>Salsa</th>
+                    <th>Hora de Pedido</th>
+                    <th>Hora de Finalización</th>
+                </tr>
+                {% for pedido in historial %}
+                <tr>
+                    <td>{{ pedido.order_number }}</td>
+                    <td>{{ pedido.name }}</td>
+                    <td>{{ pedido.phone }}</td>
+                    <td>{{ pedido.bebida }}</td>
+                    <td>{{ pedido.salsa }}</td>
+                    <td>{{ pedido.time }}</td>
+                    <td>{{ pedido.final_time }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p class="alert">No hay pedidos finalizados registrados.</p>
+            {% endif %}
+        </div>
+        <a href="/admin"><button>Volver a Administración</button></a>
+    </div>
 </body>
 </html>

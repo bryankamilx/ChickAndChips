@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chick & Chips - Hacer Pedido</title>
+    <title>Hacer Pedido - Chick & Chips</title>
+    <link rel="stylesheet" type="text/css" href="/static/style_cliente.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h2>Hacer Pedido</h2>
-    <form action="/order" method="post">
-        <label>Nombre:</label><br>
-        <input type="text" name="name" required><br><br>
-
-        <label>Teléfono:</label><br>
-        <input type="text" name="phone" required><br><br>
-
-        <label>Bebida:</label><br>
-        <select name="bebida">
-            <option value="Coca-Cola">Coca-Cola</option>
-            <option value="Sprite">Sprite</option>
-            <option value="Agua">Agua</option>
-        </select><br><br>
-
-        <label>Salsa:</label><br>
-        <select name="salsa">
-            <option value="BBQ">BBQ</option>
-            <option value="Miel Mostaza">Miel Mostaza</option>
-            <option value="Tártara">Tártara</option>
-        </select><br><br>
-
-        <button type="submit">Continuar</button>
-    </form>
-    <br>
-    <a href="/">Volver a Inicio</a>
+    <div class="header">
+        <h1>CHICK & CHIPS</h1>
+        <p>Calle 21 # 1-43</p>
+    </div>
+    <div class="container">
+        <h2>Hacer Pedido</h2>
+        <form action="/order" method="post">
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="text" name="phone" placeholder="Teléfono" required>
+            <select name="bebida">
+                <option value="Coca-Cola">Coca-Cola</option>
+                <option value="Sprite">Sprite</option>
+                <option value="Agua">Agua</option>
+            </select>
+            <select name="salsa">
+                <option value="BBQ">BBQ</option>
+                <option value="Miel Mostaza">Miel Mostaza</option>
+                <option value="Tártara">Tártara</option>
+            </select>
+            <button type="submit">Pagar con PSE</button>
+            <a href="/"><button type="button">Volver a Inicio</button></a>
+        </form>
+        <footer>© 2025 Chick & Chips</footer>
+    </div>
 </body>
 </html>
